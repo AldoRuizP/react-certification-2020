@@ -1,0 +1,15 @@
+.footer {
+  height: var(--footer-size);
+  background-color: var(--bg);
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.footer a {
+  font: inherit;
+  color: var(--text-color);
+  text-decoration: none;
+}
