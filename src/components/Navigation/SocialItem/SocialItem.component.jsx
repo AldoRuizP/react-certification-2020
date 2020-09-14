@@ -1,14 +1,14 @@
 import React from 'react';
 
-import SOCIAL_CONFIG from './constants.js';
+import SOCIAL_CONFIG from './constants';
 import './SocialItem.styles.css';
 
 function SocialItem(props) {
-  const { name, link, icon } = SOCIAL_CONFIG[props.social]
+  const { name, link, icon } = SOCIAL_CONFIG[props.social];
 
-  function handleClick(event){
+  function handleClick(event) {
     event.preventDefault();
-    window.open(link, "_blank")
+    window.open(link, '_blank');
   }
 
   return (

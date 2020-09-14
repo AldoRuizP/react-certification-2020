@@ -1,1 +1,1 @@
-export {default} from './SocialItem.component.jsx';
+export { default } from './SocialItem.component';
