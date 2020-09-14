@@ -20,7 +20,7 @@ function DropdownMenu() {
   function DropdownNavigationItem(props) {
     return (
       <div
-        className="menu-item"
+        className="menu-item clickable-item"
         role="button"
         tabIndex="0"
         onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}

@@ -33,11 +33,10 @@
   transition: width 150ms;
 }
 
-
-.right-icon-button{
+.right-icon-button {
   margin-left: auto;
 }
 
-.left-icon-button{
+.left-icon-button {
   margin-right: 15px;
 }

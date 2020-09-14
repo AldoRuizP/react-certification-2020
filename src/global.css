@@ -31,3 +31,8 @@ a {
   color: -var(--text-color);
   text-decoration: none;
 }
+
+.clickable-item:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 1px #fff inset;
+}

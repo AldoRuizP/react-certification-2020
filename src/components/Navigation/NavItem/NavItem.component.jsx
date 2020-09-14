@@ -17,7 +17,7 @@ function NavItem(props) {
           role="button"
           tabIndex="0"
           href="#"
-          className="nav-icon"
+          className="nav-icon clickable-item"
           onClick={toggleOpen}
           onKeyDown={toggleOpen}
         >
