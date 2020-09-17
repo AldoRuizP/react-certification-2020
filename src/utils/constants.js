@@ -1,3 +1,3 @@
 const AUTH_STORAGE_KEY = 'wa_cert_authenticated';
-
-export { AUTH_STORAGE_KEY };
+const PROFILE_PICTURE = 'wa_cert_profile_picture';
+export { AUTH_STORAGE_KEY, PROFILE_PICTURE };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 
-import { AUTH_STORAGE_KEY } from '../../utils/constants';
+import { AUTH_STORAGE_KEY, PROFILE_PICTURE } from '../../utils/constants';
 import { storage } from '../../utils/storage';
 
 const AuthContext = React.createContext(null);
@@ -23,9 +23,28 @@ function AuthProvider({ children }) {
     setAuthenticated(isAuthenticated);
   }, []);
 
+  const setProfilePicture = useCallback((newPicture) => {
+    storage.set(PROFILE_PICTURE, newPicture);
+  }, []);
+
+  const getProfilePicture = useCallback(() => {
+    const lastAuthState = storage.get(AUTH_STORAGE_KEY);
+    const isAuthenticated = Boolean(lastAuthState);
+    let avatar = 'incognito';
+    if (isAuthenticated) {
+      avatar = storage.get(PROFILE_PICTURE);
+    }
+    return avatar;
+  }, []);
+
   const login = useCallback(() => {
     setAuthenticated(true);
     storage.set(AUTH_STORAGE_KEY, true);
+
+    const profilePicture = storage.get(PROFILE_PICTURE);
+    if (!profilePicture) {
+      storage.set(PROFILE_PICTURE, 'snake');
+    }
   }, []);
 
   const logout = useCallback(() => {
@@ -34,7 +53,9 @@ function AuthProvider({ children }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ login, logout, authenticated }}>
+    <AuthContext.Provider
+      value={{ login, logout, authenticated, setProfilePicture, getProfilePicture }}
+    >
       {children}
     </AuthContext.Provider>
   );

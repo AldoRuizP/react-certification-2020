@@ -16,7 +16,7 @@
   padding: 0;
   margin: 0;
   width: fit-content;
-  position: fixed;
+  position: absolute;
   height: inherit;
   display: flex;
   flex-direction: row;

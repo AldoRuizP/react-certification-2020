@@ -1,3 +1,4 @@
+import React from 'react';
 import { ReactComponent as Bear } from '../../assets/icons/avatars/bear.svg';
 import { ReactComponent as Bird } from '../../assets/icons/avatars/bird.svg';
 import { ReactComponent as Buffalo } from '../../assets/icons/avatars/buffalo.svg';
@@ -23,31 +24,35 @@ import { ReactComponent as Rhino } from '../../assets/icons/avatars/rhino.svg';
 import { ReactComponent as Snake } from '../../assets/icons/avatars/snake.svg';
 import { ReactComponent as Tiger } from '../../assets/icons/avatars/tiger.svg';
 import { ReactComponent as Walrus } from '../../assets/icons/avatars/walrus.svg';
+import { ReactComponent as Incognito } from '../../assets/icons/avatars/incognito.svg';
 
-export {
-  Bear,
-  Bird,
-  Buffalo,
-  Cat,
-  Cow,
-  Deer,
-  Dog,
-  Elephant,
-  Fox,
-  Giraffe,
-  Goat,
-  Gorilla,
-  Hippopotamus,
-  Horse,
-  Husky,
-  Koala,
-  Lion,
-  Monkey,
-  Panda,
-  Pig,
-  Rabbit,
-  Rhino,
-  Snake,
-  Tiger,
-  Walrus,
+const AVATAR_MAP = {
+  bear: <Bear />,
+  bird: <Bird />,
+  buffalo: <Buffalo />,
+  cat: <Cat />,
+  cow: <Cow />,
+  deer: <Deer />,
+  dog: <Dog />,
+  elephant: <Elephant />,
+  fox: <Fox />,
+  giraffe: <Giraffe />,
+  goat: <Goat />,
+  gorilla: <Gorilla />,
+  hippopotamus: <Hippopotamus />,
+  horse: <Horse />,
+  husky: <Husky />,
+  koala: <Koala />,
+  lion: <Lion />,
+  monkey: <Monkey />,
+  panda: <Panda />,
+  pig: <Pig />,
+  rabbit: <Rabbit />,
+  rhino: <Rhino />,
+  snake: <Snake />,
+  tiger: <Tiger />,
+  walrus: <Walrus />,
+  incognito: <Incognito />,
 };
+
+export { AVATAR_MAP };

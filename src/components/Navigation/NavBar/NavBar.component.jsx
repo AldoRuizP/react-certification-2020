@@ -3,15 +3,17 @@ import { Link } from 'react-router-dom';
 import NavItem from '../NavItem';
 import DropdownMenu from '../DropdownMenu';
 import SearchBar from '../SearchBar';
+import { useAuth } from '../../../providers/Auth';
 
 import { Search, WizelineLogo, WizelineHeaderLight } from '../../Icons/navigation';
-import { Snake } from '../../Icons/avatars';
+import { AVATAR_MAP } from '../../Icons/avatars';
 
 import './NavBar.styles.css';
 
-const currentAvatar = <Snake />;
-
 function NavBar() {
+  const { getProfilePicture } = useAuth();
+  const currentAvatar = getProfilePicture();
+
   return (
     <nav className="navbar">
       <Link to="/" className="navbar-title">
@@ -22,7 +24,7 @@ function NavBar() {
         <NavItem icon={<Search />}>
           <SearchBar />
         </NavItem>
-        <NavItem icon={currentAvatar}>
+        <NavItem icon={AVATAR_MAP[currentAvatar]}>
           <DropdownMenu />
         </NavItem>
       </ul>

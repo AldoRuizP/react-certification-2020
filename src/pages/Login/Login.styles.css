@@ -1,8 +1,15 @@
 .login {
+  min-height: 77vh;
+  display: grid;
+  place-items: center;
+}
+.login-wrapper {
   width: 300px;
+  display: grid;
+  place-items: center;
 }
 
-.login h1 {
+.login-wrapper h1 {
   text-align: center;
   letter-spacing: -1px;
 }
@@ -28,13 +35,18 @@
 }
 
 .form-group input {
-  color: white;
+  color: black;
   font-size: 1.2rem;
   width: 100%;
   padding: 0.4rem 0.6rem;
   border-radius: 3px;
   border: 1px solid white;
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.form-input input:focus {
+  outline: none;
+  box-shadow: 1px 1px 1px 1px black;
 }
 
 .login-form button[type='submit'] {

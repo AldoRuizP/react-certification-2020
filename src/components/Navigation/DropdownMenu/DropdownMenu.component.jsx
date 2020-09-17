@@ -78,11 +78,9 @@ function DropdownMenu() {
           </DropdownNavigationItem>
 
           {authenticated ? (
-            <DropdownItem leftIcon={<NavigationIcons.Logout />}>
-              <Link to="/" onClick={deAuthenticate}>
-                Logout
-              </Link>
-            </DropdownItem>
+            <Link to="/" onClick={deAuthenticate}>
+              <DropdownItem leftIcon={<NavigationIcons.Logout />}>Logout</DropdownItem>
+            </Link>
           ) : (
             <Link to="/login" ref={sectionRef}>
               <DropdownItem leftIcon={<NavigationIcons.Logout />}>Login</DropdownItem>
