@@ -4,5 +4,16 @@ import { ReactComponent as Search } from '../../assets/icons/navigation/search.s
 import { ReactComponent as Settings } from '../../assets/icons/navigation/settings.svg';
 import { ReactComponent as Share } from '../../assets/icons/navigation/share.svg';
 import { ReactComponent as Chevron } from '../../assets/icons/navigation/chevron.svg';
+import { ReactComponent as WizelineLogo } from '../../assets/icons/navigation/wizeline_logo.svg';
+import { ReactComponent as WizelineHeaderLight } from '../../assets/icons/navigation/wizeline_header_light.svg';
 
-export { Favorite, Logout, Search, Settings, Share, Chevron };
+export {
+  Favorite,
+  Logout,
+  Search,
+  Settings,
+  Share,
+  Chevron,
+  WizelineLogo,
+  WizelineHeaderLight,
+};

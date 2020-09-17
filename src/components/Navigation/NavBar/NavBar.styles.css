@@ -1,6 +1,6 @@
 .navbar {
   height: var(--nav-size);
-  background-color:  var(--bg);
+  background-color: var(--bg);
   border-bottom: var(--border);
   padding: 0 1rem;
 }
@@ -10,4 +10,14 @@
   height: 100%;
   display: flex;
   justify-content: flex-end;
+}
+
+.navbar-title {
+  padding: 0;
+  margin: 0;
+  width: fit-content;
+  position: fixed;
+  height: inherit;
+  display: grid;
+  align-content: center;
 }
