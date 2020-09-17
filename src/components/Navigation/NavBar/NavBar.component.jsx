@@ -11,8 +11,10 @@ import { getAvatarByName } from '../../Icons/avatars';
 import './NavBar.styles.css';
 
 function NavBar() {
-  const { profilePicture } = useAuth();
-  const avatarIcon = getAvatarByName(profilePicture).svg;
+  const { profilePicture, authenticated } = useAuth();
+  const avatarIcon = authenticated
+    ? getAvatarByName(profilePicture).svg
+    : getAvatarByName(null).svg;
 
   return (
     <nav className="navbar">

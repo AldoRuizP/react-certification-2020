@@ -59,6 +59,15 @@ function DropdownMenu() {
         onEnter={calcHeight}
       >
         <div className="menu">
+          {authenticated ? (
+            <Link to="favorites">
+              <DropdownItem leftIcon={<NavigationIcons.Favorite />}>
+                My Favorites
+              </DropdownItem>
+            </Link>
+          ) : (
+            <></>
+          )}
           <DropdownItem leftIcon={<NavigationIcons.Favorite />}>
             My Favorites
           </DropdownItem>
