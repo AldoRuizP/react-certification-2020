@@ -10,6 +10,7 @@ function SearchBar() {
         type="text"
         id="searchItem"
         placeholder="Search for a video..."
+        autoComplete="off"
       />
     </div>
   );
