@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import SocialItem from '../SocialItem/index';
-
+import { useAuth } from '../../../providers/Auth';
 import DropdownItem from '../DropdownItem';
 
 import * as NavigationIcons from '../../Icons/navigation';
@@ -11,10 +12,19 @@ import './DropdownMenu.styles.css';
 function DropdownMenu() {
   const [activeMenu, setActiveMenu] = useState('main');
   const [menuHeight, setMenuHeight] = useState(null);
+  const history = useHistory();
+  const { authenticated, logout } = useAuth();
+  const sectionRef = useRef(null);
 
   function calcHeight(el) {
     const height = el.offsetHeight;
     setMenuHeight(height);
+  }
+
+  function deAuthenticate(event) {
+    event.preventDefault();
+    logout();
+    history.push('/');
   }
 
   function DropdownNavigationItem(props) {
@@ -66,7 +76,18 @@ function DropdownMenu() {
           >
             Settings
           </DropdownNavigationItem>
-          <DropdownItem leftIcon={<NavigationIcons.Logout />}>Logout</DropdownItem>
+
+          {authenticated ? (
+            <DropdownItem leftIcon={<NavigationIcons.Logout />}>
+              <Link to="/" onClick={deAuthenticate}>
+                Logout
+              </Link>
+            </DropdownItem>
+          ) : (
+            <Link to="/login" ref={sectionRef}>
+              <DropdownItem leftIcon={<NavigationIcons.Logout />}>Login</DropdownItem>
+            </Link>
+          )}
         </div>
       </CSSTransition>
 

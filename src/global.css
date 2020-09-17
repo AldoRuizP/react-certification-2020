@@ -28,8 +28,12 @@ ul {
 }
 
 a {
-  color: -var(--text-color);
+  color: var(--text-color);
   text-decoration: none;
+}
+
+a:visited {
+  color: var(--text-color);
 }
 
 .clickable-item:focus {
