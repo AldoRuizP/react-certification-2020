@@ -1,0 +1,11 @@
+.profile-picture-container {
+  min-height: 77vh;
+  display: grid;
+  place-items: center;
+}
+
+.avatars-container {
+  width: 85%;
+  display: flex;
+  flex-flow: wrap;
+}

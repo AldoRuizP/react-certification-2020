@@ -102,7 +102,13 @@ function DropdownMenu() {
             goToMenu="main"
             classNames="mirror-svg"
           />
-          <DropdownItem leftIcon={<NavigationIcons.Favorite />}>Get a prize</DropdownItem>
+          {authenticated && (
+            <Link to="/profile-picture">
+              <DropdownItem leftIcon={<NavigationIcons.Image />}>
+                Change Profile Picture
+              </DropdownItem>
+            </Link>
+          )}
           <DropdownItem leftIcon={<NavigationIcons.Favorite />}>Get a prize</DropdownItem>
           <DropdownItem leftIcon={<NavigationIcons.Favorite />}>Get a prize</DropdownItem>
           <DropdownItem leftIcon={<NavigationIcons.Favorite />}>Get a prize</DropdownItem>

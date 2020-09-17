@@ -27,32 +27,40 @@ import { ReactComponent as Walrus } from '../../assets/icons/avatars/walrus.svg'
 import { ReactComponent as Incognito } from '../../assets/icons/avatars/incognito.svg';
 
 const AVATAR_MAP = {
-  bear: <Bear />,
-  bird: <Bird />,
-  buffalo: <Buffalo />,
-  cat: <Cat />,
-  cow: <Cow />,
-  deer: <Deer />,
-  dog: <Dog />,
-  elephant: <Elephant />,
-  fox: <Fox />,
-  giraffe: <Giraffe />,
-  goat: <Goat />,
-  gorilla: <Gorilla />,
-  hippopotamus: <Hippopotamus />,
-  horse: <Horse />,
-  husky: <Husky />,
-  koala: <Koala />,
-  lion: <Lion />,
-  monkey: <Monkey />,
-  panda: <Panda />,
-  pig: <Pig />,
-  rabbit: <Rabbit />,
-  rhino: <Rhino />,
-  snake: <Snake />,
-  tiger: <Tiger />,
-  walrus: <Walrus />,
-  incognito: <Incognito />,
+  bear: { name: 'Bear', svg: <Bear /> },
+  bird: { name: 'Bird', svg: <Bird /> },
+  buffalo: { name: 'Buffalo', svg: <Buffalo /> },
+  cat: { name: 'Cat', svg: <Cat /> },
+  cow: { name: 'Cow', svg: <Cow /> },
+  deer: { name: 'Deer', svg: <Deer /> },
+  dog: { name: 'Dog', svg: <Dog /> },
+  elephant: { name: 'Elephant', svg: <Elephant /> },
+  fox: { name: 'Fox', svg: <Fox /> },
+  giraffe: { name: 'Giraffe', svg: <Giraffe /> },
+  goat: { name: 'Goat', svg: <Goat /> },
+  gorilla: { name: 'Gorilla', svg: <Gorilla /> },
+  hippopotamus: { name: 'Hippopotamus', svg: <Hippopotamus /> },
+  horse: { name: 'Horse', svg: <Horse /> },
+  husky: { name: 'Husky', svg: <Husky /> },
+  koala: { name: 'Koala', svg: <Koala /> },
+  lion: { name: 'Lion', svg: <Lion /> },
+  monkey: { name: 'Monkey', svg: <Monkey /> },
+  panda: { name: 'Panda', svg: <Panda /> },
+  pig: { name: 'Pig', svg: <Pig /> },
+  rabbit: { name: 'Rabbit', svg: <Rabbit /> },
+  rhino: { name: 'Rhino', svg: <Rhino /> },
+  snake: { name: 'Snake', svg: <Snake /> },
+  tiger: { name: 'Tiger', svg: <Tiger /> },
+  walrus: { name: 'Walrus', svg: <Walrus /> },
 };
 
-export { AVATAR_MAP };
+const defaultAvatar = {
+  name: 'Default',
+  svg: <Incognito />,
+};
+
+function getAvatarByName(name) {
+  return AVATAR_MAP[name] || defaultAvatar;
+}
+
+export { AVATAR_MAP, getAvatarByName };

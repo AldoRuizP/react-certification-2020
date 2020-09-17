@@ -6,6 +6,7 @@ import { ReactComponent as Share } from '../../assets/icons/navigation/share.svg
 import { ReactComponent as Chevron } from '../../assets/icons/navigation/chevron.svg';
 import { ReactComponent as WizelineLogo } from '../../assets/icons/navigation/wizeline_logo.svg';
 import { ReactComponent as WizelineHeaderLight } from '../../assets/icons/navigation/wizeline_header_light.svg';
+import { ReactComponent as Image } from '../../assets/icons/navigation/image.svg';
 
 export {
   Favorite,
@@ -16,4 +17,5 @@ export {
   Chevron,
   WizelineLogo,
   WizelineHeaderLight,
+  Image,
 };

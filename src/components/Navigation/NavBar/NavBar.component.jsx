@@ -6,13 +6,14 @@ import SearchBar from '../SearchBar';
 import { useAuth } from '../../../providers/Auth';
 
 import { Search, WizelineLogo, WizelineHeaderLight } from '../../Icons/navigation';
-import { AVATAR_MAP } from '../../Icons/avatars';
+import { getAvatarByName } from '../../Icons/avatars';
 
 import './NavBar.styles.css';
 
 function NavBar() {
   const { getProfilePicture } = useAuth();
   const currentAvatar = getProfilePicture();
+  const avatarIcon = getAvatarByName(currentAvatar).svg;
 
   return (
     <nav className="navbar">
@@ -24,7 +25,7 @@ function NavBar() {
         <NavItem icon={<Search />}>
           <SearchBar />
         </NavItem>
-        <NavItem icon={AVATAR_MAP[currentAvatar]}>
+        <NavItem icon={avatarIcon}>
           <DropdownMenu />
         </NavItem>
       </ul>
