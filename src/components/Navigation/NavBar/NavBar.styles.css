@@ -18,6 +18,27 @@
   width: fit-content;
   position: fixed;
   height: inherit;
-  display: grid;
-  align-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 20%;
+  align-items: center;
+  cursor: pointer;
+}
+
+.wizeline-logo {
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  fill: white;
+}
+
+.wizeline-header-light {
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 3;
 }
