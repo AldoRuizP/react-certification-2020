@@ -13,10 +13,21 @@
   box-shadow: 0px 0px 4px gold;
 }
 
+.profile-picture-image-container:focus, .profile-picture-image-container:active {
+  outline: none;
+  border: 1px solid green;
+  box-shadow: 0px 0px 4px green;  
+}
+
 .profile-picture-image-container:hover svg{
   animation: shake 0.5s;
   animation-iteration-count: infinite;
 }
+
+.profile-picture-image-container:focus svg{
+  animation: none;
+}
+
 
 .profile-picture-image-container:hover .picture-name{
   font-weight: bolder;

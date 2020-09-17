@@ -5,8 +5,10 @@ import { AVATAR_MAP } from '../../components/Icons/avatars';
 import './ProfilePicture.styles.css';
 
 function SecretPage() {
-  const avatars = Object.keys(AVATAR_MAP).map((avatarKey) => {
-    return <ProfilePictureCard id={avatarKey} image={AVATAR_MAP[avatarKey]} />;
+  const avatars = Object.keys(AVATAR_MAP).map((avatarKey, index) => {
+    return (
+      <ProfilePictureCard id={avatarKey} index={index} image={AVATAR_MAP[avatarKey]} />
+    );
   });
 
   return (

@@ -11,9 +11,8 @@ import { getAvatarByName } from '../../Icons/avatars';
 import './NavBar.styles.css';
 
 function NavBar() {
-  const { getProfilePicture } = useAuth();
-  const currentAvatar = getProfilePicture();
-  const avatarIcon = getAvatarByName(currentAvatar).svg;
+  const { profilePicture } = useAuth();
+  const avatarIcon = getAvatarByName(profilePicture).svg;
 
   return (
     <nav className="navbar">
