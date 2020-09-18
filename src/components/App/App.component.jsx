@@ -7,6 +7,7 @@ import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
 import ProfilePicture from '../../pages/ProfilePicture';
+import FavoritesPage from '../../pages/Favorites';
 import Private from '../Private';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
@@ -46,6 +47,9 @@ function App() {
             </Private>
             <Private exact path="/profile-picture">
               <ProfilePicture />
+            </Private>
+            <Private exact path="/favorites">
+              <FavoritesPage />
             </Private>
             <Route path="*">
               <NotFound />

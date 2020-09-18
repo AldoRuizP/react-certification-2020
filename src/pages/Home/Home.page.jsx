@@ -1,7 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 
+import VideoList from '../../components/Video/List';
+import useVideoFeed from '../../utils/hooks/useVideoFeed';
 import { useAuth } from '../../providers/Auth';
 
 const Section = styled.section`
@@ -15,6 +17,8 @@ const Subtitle = styled.h2``;
 
 function HomePage() {
   const history = useHistory();
+  const [videoList, setVideoList] = useState([]);
+  const { videos } = useVideoFeed();
   const sectionRef = useRef(null);
   const { authenticated, logout } = useAuth();
 
@@ -24,9 +28,14 @@ function HomePage() {
     history.push('/');
   }
 
+  useEffect(() => {
+    setVideoList(videos);
+  }, [videos]);
+
   return (
     <>
       <Section ref={sectionRef}>
+        <VideoList videos={videoList} />
         <Title>Hello stranger!</Title>
         {authenticated ? (
           <>

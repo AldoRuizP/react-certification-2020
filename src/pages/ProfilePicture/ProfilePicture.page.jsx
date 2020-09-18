@@ -17,19 +17,17 @@ const ProfilePictures = styled.section`
   place-items: center;
 `;
 
-function SecretPage() {
+function ProfilePicturePage() {
   const { profilePicture } = useAuth();
 
-  const avatars = Object.keys(AVATAR_MAP).map((avatarKey, index) => {
-    return (
-      <ProfilePictureCard
-        id={avatarKey}
-        index={index}
-        image={AVATAR_MAP[avatarKey]}
-        startActive={profilePicture === avatarKey}
-      />
-    );
-  });
+  const avatars = Object.keys(AVATAR_MAP).map((avatarKey, index) => (
+    <ProfilePictureCard
+      id={avatarKey}
+      index={index}
+      image={AVATAR_MAP[avatarKey]}
+      startActive={profilePicture === avatarKey}
+    />
+  ));
 
   return (
     <ProfilePictures>
@@ -39,4 +37,4 @@ function SecretPage() {
   );
 }
 
-export default SecretPage;
+export default ProfilePicturePage;
