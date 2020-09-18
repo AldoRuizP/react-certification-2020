@@ -12,14 +12,16 @@ function useVideoFeed() {
   function parseVideoList(items) {
     return items.map((item) => {
       const { videoId } = item.id;
-      const { title, channelTitle, publishTime } = item.snippet;
-      const thumbnail = item.snippet.thumbnails.default.url;
+      const { title, channelTitle, publishTime, description } = item.snippet;
+      const thumbnail = item.snippet.thumbnails.high.url;
       return {
         videoId,
         title,
         channelTitle,
-        publishTime,
+        publishTime: new Date(publishTime).toDateString(),
         thumbnail,
+        description,
+        url: `https://www.youtube.com/watch?v=${videoId}`,
       };
     });
   }
