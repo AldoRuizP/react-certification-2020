@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import mockData from './videoMockData';
 
 // const API_URL = 'https://www.googleapis.com/youtube/v3/search?';
-// const API_KEY = 'AIzaSyByuIFjMKM-dTsVvQjtG1qFEaXtyoQj9gI';
 // const PART = 'snippet';
 // const MAX_RESULTS = 10;
 // const TYPE = 'video';
