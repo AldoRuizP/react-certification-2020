@@ -1,8 +1,17 @@
 import React, { useRef } from 'react';
+import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 
 import { useAuth } from '../../providers/Auth';
-import './Home.styles.css';
+
+const Section = styled.section`
+  text-align: center;
+`;
+const Title = styled.h1`
+  font-size: 3rem;
+  letter-spacing: -2px;
+`;
+const Subtitle = styled.h2``;
 
 function HomePage() {
   const history = useHistory();
@@ -17,23 +26,22 @@ function HomePage() {
 
   return (
     <>
-      <section className="homepage" ref={sectionRef}>
-        <h1>Hello stranger!</h1>
+      <Section ref={sectionRef}>
+        <Title>Hello stranger!</Title>
         {authenticated ? (
           <>
-            <h2>Good to have you back</h2>
+            <Subtitle>Good to have you back</Subtitle>
             <span>
               <Link to="/" onClick={deAuthenticate}>
                 ← logout
               </Link>
-              <span className="separator" />
-              <Link to="/secret">show me something cool →</Link>
+              <Link to="/secret"> show me something cool →</Link>
             </span>
           </>
         ) : (
-          <Link to="/login">let me in →</Link>
+          <Link to="/login">Let me in →</Link>
         )}
-      </section>
+      </Section>
     </>
   );
 }

@@ -1,8 +1,70 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-
+import styled from 'styled-components';
 import { useAuth } from '../../providers/Auth';
-import './Login.styles.css';
+
+const Section = styled.section`
+  min-height: 77vh;
+  display: grid;
+  place-items: center;
+`;
+
+const Wrapper = styled.div`
+  width: 300px;
+  display: grid;
+  place-items: center;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+  letter-spacing: -1px;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const FormGroup = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+`;
+
+const Label = styled.label`
+  & strong {
+    display: block;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 0.4rem;
+  }
+`;
+
+const Input = styled.input`
+  color: black;
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border-radius: 3px;
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.1);
+
+  &:focus {
+    outline: none;
+    box-shadow: 1px 1px 1px 1px black;
+  }
+`;
+
+const Button = styled.button`
+  width: 5rem;
+  margin-top: 1rem;
+  padding: 0.4rem 0.6rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 3px;
+`;
 
 function LoginPage() {
   const { login } = useAuth();
@@ -15,26 +77,26 @@ function LoginPage() {
   }
 
   return (
-    <section className="login">
-      <div className="login-wrapper">
-        <h1>Welcome back!</h1>
-        <form onSubmit={authenticate} className="login-form">
-          <div className="form-group">
-            <label htmlFor="username">
+    <Section>
+      <Wrapper>
+        <Title>Welcome back!</Title>
+        <Form onSubmit={authenticate}>
+          <FormGroup>
+            <Label htmlFor="username">
               <strong>username </strong>
-              <input required type="text" id="username" />
-            </label>
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">
+              <Input required type="text" id="username" />
+            </Label>
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="password">
               <strong>password </strong>
-              <input required type="password" id="password" />
-            </label>
-          </div>
-          <button type="submit">Login</button>
-        </form>
-      </div>
-    </section>
+              <Input required type="password" id="password" />
+            </Label>
+          </FormGroup>
+          <Button type="submit">Login</Button>
+        </Form>
+      </Wrapper>
+    </Section>
   );
 }
 
