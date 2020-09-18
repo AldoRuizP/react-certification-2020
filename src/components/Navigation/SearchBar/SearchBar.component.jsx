@@ -25,6 +25,9 @@ const Input = styled.input`
   background-color: var(--bg-accent);
   transform-origin: 100% 50%;
   animation: ${extend} 500ms ease;
+  color: white;
+  font-size: 15px;
+  letter-spacing: 2px;
 `;
 
 function SearchBar() {
