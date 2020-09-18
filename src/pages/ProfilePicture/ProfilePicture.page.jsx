@@ -1,9 +1,21 @@
 import React from 'react';
 
+import styled from 'styled-components';
 import { useAuth } from '../../providers/Auth';
 import ProfilePictureCard from '../../components/ProfilePicture/Card';
 import { AVATAR_MAP } from '../../components/Icons/avatars';
-import './ProfilePicture.styles.css';
+
+const Title = styled.h2``;
+const AvatarsContainer = styled.div`
+  width: 85%;
+  display: flex;
+  flex-flow: wrap;
+`;
+const ProfilePictures = styled.section`
+  min-height: 77vh;
+  display: grid;
+  place-items: center;
+`;
 
 function SecretPage() {
   const { profilePicture } = useAuth();
@@ -20,10 +32,10 @@ function SecretPage() {
   });
 
   return (
-    <section className="profile-picture-container">
-      <h2>Choose your preferred image!</h2>
-      <div className="avatars-container">{avatars}</div>
-    </section>
+    <ProfilePictures>
+      <Title>Choose your preferred image!</Title>
+      <AvatarsContainer>{avatars}</AvatarsContainer>
+    </ProfilePictures>
   );
 }
 
