@@ -41,7 +41,7 @@ const useVideoFetch = (videoId) => {
       }
     };
     fetchData();
-  }, []);
+  }, [videoId]);
 
   return { response, error };
 };

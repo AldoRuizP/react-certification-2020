@@ -18,7 +18,7 @@ function Scroll(props) {
 
   if (videoFeed.videos && videoFeed.videos.length) {
     videos = videoFeed.videos.map((video) => {
-      return <ScrollCard {...video} />;
+      return <ScrollCard {...video} key={video.videoId} />;
     });
   }
 
