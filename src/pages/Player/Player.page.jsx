@@ -5,10 +5,8 @@ import VideoPlayer from '../../components/Video/Player';
 import useVideoFetch from '../../utils/hooks/useVideoFetch';
 
 const Container = styled.section`
-  min-width: 75vw;
   min-height: 77vh;
-  max-height: 700px;
-  max-width: 1100px;
+  width: 100%;
 `;
 
 function PlayerPage() {

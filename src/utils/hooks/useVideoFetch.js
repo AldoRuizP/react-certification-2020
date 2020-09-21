@@ -19,7 +19,7 @@ const useVideoFetch = (videoId) => {
         tags,
       } = obj.items[0].snippet;
       return {
-        publishedAt,
+        publishedAt: new Date(publishedAt).toDateString(),
         title,
         description,
         channelTitle,

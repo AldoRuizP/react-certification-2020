@@ -1,21 +1,48 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { AVATAR_MAP } from '../../Icons/avatars';
+
 const Container = styled.div`
   height: inherit;
-  width: 75%;
-  border: 1px solid black;
+  width: 74%;
 `;
 const Player = styled.iframe`
   width: 100%;
-  height: 75%;
+  height: 600px;
   border: none;
 `;
-const Details = styled.div``;
+const Details = styled.div`
+  padding: 10px 10px;
+`;
 const Title = styled.h1`
   margin: 0;
-  padding: 0;
   font-size: 20px;
+`;
+const ChannelDetails = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  margin-top: 10px;
+  border-top: 1px solid gray;
+  padding-top: 10px;
+`;
+const ChannelIcon = styled.div`
+  border: 1px solid black;
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background-color: white;
+  & svg {
+    height: 75%;
+  }
+`;
+const ChannelText = styled.div`
+  padding-left: 20px;
 `;
 const Channel = styled.h2`
   margin: 0;
@@ -24,8 +51,18 @@ const Channel = styled.h2`
   position: relative;
   right: 0;
 `;
-const TimeStamp = styled.p``;
-const Description = styled.p``;
+const TimeStamp = styled.p`
+  font-size: 15px;
+  padding: 0;
+  margin: 0;
+  color: gray;
+`;
+const Description = styled.p`
+  margin: 0 0 0 95px;
+  padding: 0;
+  font-size: 15px;
+  justify-content: center;
+`;
 
 function VideoPlayer(props) {
   return (
@@ -33,8 +70,13 @@ function VideoPlayer(props) {
       <Player src={props.url} title={props.title} />
       <Details>
         <Title>{props.title}</Title>
-        <Channel>By: {props.channelTitle}</Channel>
-        <TimeStamp>{props.publishTime}</TimeStamp>
+        <ChannelDetails>
+          <ChannelIcon>{AVATAR_MAP.cat.svg}</ChannelIcon>
+          <ChannelText>
+            <Channel>{props.channelTitle}</Channel>
+            <TimeStamp>{props.publishedAt}</TimeStamp>
+          </ChannelText>
+        </ChannelDetails>
         <Description>{props.description}</Description>
       </Details>
     </Container>
