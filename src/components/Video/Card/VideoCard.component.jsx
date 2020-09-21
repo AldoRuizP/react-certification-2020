@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Thumbnail = styled.div`
@@ -58,6 +59,9 @@ const Details = styled.div`
     &:hover {
       transform: scale(0.9);
       background: #e64533;
+    }
+    &:visited {
+      color: white;
     }
   }
 `;
@@ -141,9 +145,7 @@ function VideoCard(props) {
         <Details>
           <Description>{props.description}</Description>
           <Timestamp>{props.publishTime}</Timestamp>
-          <a href={props.url} rel="noreferrer" target="_blank">
-            Watch
-          </a>
+          <Link to={`watch?v=${props.videoId}`}>Watch</Link>
         </Details>
       </Content>
     </Card>

@@ -21,7 +21,7 @@ function useVideoFeed() {
         publishTime: new Date(publishTime).toDateString(),
         thumbnail,
         description,
-        url: `https://www.youtube.com/watch?v=${videoId}`,
+        url: `https://www.youtube.com/embed/${videoId}`,
       };
     });
   }
