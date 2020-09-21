@@ -10,16 +10,6 @@ const Wrapper = styled.div`
   padding: 5px 10px 5px 10px;
 `;
 
-const Container = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-flow: row;
-  overflow: hidden;
-  border: 1px solid black;
-  border-radius: 20px;
-  cursor: pointer;
-`;
 const Description = styled.div`
   display: grid;
   padding: 5px;
@@ -32,6 +22,7 @@ const Thumbnail = styled.div`
   & img {
     height: 100%;
     transform: scale(1.5, 1.5);
+    transition: all ease 250ms;
   }
 `;
 const Title = styled.h2`
@@ -50,6 +41,48 @@ const Channel = styled.p`
   font-size: 12px;
 `;
 
+const WatchNow = styled.div`
+  display: none;
+  z-index: 1;
+  position: absolute;
+  background-color: white;
+  height: 100%;
+  width: 50%;
+  transition: all ease 250ms;
+`;
+
+const Container = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  overflow: hidden;
+  border: 1px solid black;
+  border-radius: 20px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 2px 2px 0 0 gray;
+    transform: scale(1.025, 1.025);
+
+    & ${Thumbnail} {
+      position: absolute;
+      right: 0;
+
+      & img {
+        transform: translateX(110%) scale(1.5, 1.5);
+        z-index: 10;
+      }
+    }
+
+    & ${WatchNow} {
+      display: grid;
+      background-color: black;
+      color: white;
+      place-items: center;
+    }
+  }
+`;
 function ScrollCard(props) {
   const history = useHistory();
 
@@ -64,6 +97,7 @@ function ScrollCard(props) {
         <Thumbnail>
           <img src={props.thumbnail} alt={props.title} />
         </Thumbnail>
+        <WatchNow>Watch Now</WatchNow>
         <Description>
           <Title>{props.title}</Title>
           <Channel>{props.channelTitle}</Channel>
