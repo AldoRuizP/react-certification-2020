@@ -27,7 +27,7 @@ function PlayerPage() {
   return (
     <Container>
       <VideoPlayer {...videoData.response} />
-      <Scroll />
+      <Scroll currentVideo={videoId} />
     </Container>
   );
 }

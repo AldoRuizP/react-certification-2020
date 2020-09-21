@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -17,14 +18,16 @@ const Container = styled.div`
   overflow: hidden;
   border: 1px solid black;
   border-radius: 20px;
+  cursor: pointer;
 `;
 const Description = styled.div`
   display: grid;
   padding: 5px;
+  width: -webkit-fill-available;
 `;
 const Thumbnail = styled.div`
   height: 100%;
-  width: 100%;
+  width: 300px;
   overflow: hidden;
   & img {
     height: 100%;
@@ -34,7 +37,7 @@ const Thumbnail = styled.div`
 const Title = styled.h2`
   margin: 0;
   padding: 0;
-  font-size: 15px;
+  font-size: 13px;
 `;
 const Timestamp = styled.p`
   margin: 0;
@@ -48,9 +51,16 @@ const Channel = styled.p`
 `;
 
 function ScrollCard(props) {
+  const history = useHistory();
+
+  function handleClick() {
+    history.push(`/watch?v=${props.videoId}`);
+    history.go(0);
+  }
+
   return (
     <Wrapper>
-      <Container>
+      <Container role="button" onKeyDown={handleClick} onClick={handleClick}>
         <Thumbnail>
           <img src={props.thumbnail} alt={props.title} />
         </Thumbnail>
@@ -63,12 +73,5 @@ function ScrollCard(props) {
     </Wrapper>
   );
 }
-
-ScrollCard.defaultProps = {
-  thumbnail: 'https://i.ytimg.com/vi/8fETbjg9V-M/hqdefault.jpg',
-  title: 'Raptors-Celtics Exchange Some Words After 2OT Game 6',
-  publishedAt: 'Wed Sep 09 2020',
-  channelTitle: 'Bleacher Report',
-};
 
 export default ScrollCard;

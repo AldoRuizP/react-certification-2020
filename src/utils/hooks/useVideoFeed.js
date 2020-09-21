@@ -3,10 +3,12 @@ import mockData from './videoMockData';
 
 // const API_URL = 'https://www.googleapis.com/youtube/v3/search?';
 // const PART = 'snippet';
-// const MAX_RESULTS = 10;
+// const MAX_RESULTS = 12;
 // const TYPE = 'video';
+// const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
 
-function useVideoFeed() {
+// eslint-disable-next-line no-unused-vars
+function useVideoFeed(relatedId) {
   const [videos, setVideos] = useState(null);
 
   function parseVideoList(items) {
@@ -27,13 +29,20 @@ function useVideoFeed() {
   }
 
   useEffect(() => {
-    // const formattedUrl = `${API_URL}part=${PART}&maxResults=${MAX_RESULTS}&type=${TYPE}&key=${API_KEY}`;
+    // let formattedUrl = `${API_URL}part=${PART}&maxResults=${MAX_RESULTS}&type=${TYPE}&key=${API_KEY}`
+
+    // if (relatedId) {
+    //   formattedUrl += `&relatedToVideoId=${relatedId}`;
+    // }
+
+    // formattedUrl += `&key=${API_KEY}`;
+
     async function getVideos() {
       try {
         // const response = await fetch(formattedUrl);
         // const resultItems = await response.json();
         // const list = parseVideoList(resultItems.items);
-        // setVideos(list[0]);
+        // setVideos(list);
         const resultItems = mockData;
         const list = parseVideoList(resultItems.items);
         setVideos(list);
