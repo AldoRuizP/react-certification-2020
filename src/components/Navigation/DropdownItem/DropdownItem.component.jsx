@@ -40,7 +40,7 @@ function DropdownItem(props) {
   return (
     <Wrapper>
       <Icon>{props.leftIcon}</Icon>
-      {props.children}
+      {props.tag}
     </Wrapper>
   );
 }
