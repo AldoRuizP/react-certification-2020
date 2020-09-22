@@ -8,8 +8,6 @@ const useVideoFetch = (videoId) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log('fetching from hook');
-
     const parseResponse = (obj) => {
       const {
         publishedAt,
@@ -17,6 +15,7 @@ const useVideoFetch = (videoId) => {
         description,
         channelTitle,
         tags,
+        thumbnails,
       } = obj.items[0].snippet;
       return {
         publishedAt: new Date(publishedAt).toDateString(),
@@ -25,6 +24,8 @@ const useVideoFetch = (videoId) => {
         channelTitle,
         tags,
         url: `https://www.youtube.com/embed/${videoId}`,
+        videoId,
+        thumbnail: thumbnails.high.url,
       };
     };
 

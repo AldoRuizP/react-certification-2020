@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import FavoritesProvider from '../../../providers/Favorites';
 
+import { Favorite as FavoriteIcon } from '../../Icons/navigation';
 import { AVATAR_MAP } from '../../Icons/avatars';
 
 const Container = styled.div`
@@ -63,8 +65,81 @@ const Description = styled.p`
   font-size: 15px;
   justify-content: center;
 `;
+const Favorite = styled.span`
+  margin-left: auto;
+  margin-right: 10px;
+  height: 30px;
+  width: 30px;
+  font-size: 5px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background-color: gray;
+  border-radius: 50%;
+  transition: all ease 250ms;
+
+  & svg {
+    height: 20px;
+    width: 20px;
+    fill: ${(props) => (props.isFavorite ? 'gold' : 'white')};
+  }
+
+  &:hover {
+    transform: scale(2, 2);
+    & svg {
+    }
+  }
+`;
 
 function VideoPlayer(props) {
+  const [isFavorite, setFavorite] = useState(false);
+  const { state, dispatch } = useContext(FavoritesProvider);
+
+  useEffect(() => {
+    dispatch({ type: 'LOAD_FROM_STORAGE' });
+    const favorite = state.favorites.some((video) => video.videoId === props.videoId);
+    console.log(favorite, props.videoId, state.favorites);
+    setFavorite(favorite);
+  }, []);
+
+  function handleFormClick(event) {
+    event.preventDefault();
+    const {
+      videoId,
+      title,
+      channelTitle,
+      publishTime,
+      publishedAt,
+      thumbnail,
+      description,
+      url,
+    } = props;
+
+    if (isFavorite) {
+      dispatch({
+        type: 'REMOVE_FAVORITE',
+        payload: {
+          videoId,
+        },
+      });
+    } else {
+      dispatch({
+        type: 'ADD_FAVORITE',
+        payload: {
+          videoId,
+          title,
+          channelTitle,
+          publishTime: publishTime || publishedAt,
+          thumbnail,
+          description,
+          url,
+        },
+      });
+    }
+
+    setFavorite(!isFavorite);
+  }
+
   return (
     <Container>
       <Player src={props.url} title={props.title} />
@@ -76,6 +151,9 @@ function VideoPlayer(props) {
             <Channel>{props.channelTitle}</Channel>
             <TimeStamp>{props.publishedAt}</TimeStamp>
           </ChannelText>
+          <Favorite onClick={handleFormClick} isFavorite={isFavorite}>
+            <FavoriteIcon />
+          </Favorite>
         </ChannelDetails>
         <Description>{props.description}</Description>
       </Details>

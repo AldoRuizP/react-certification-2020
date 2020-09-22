@@ -22,7 +22,7 @@ const Thumbnail = styled.div`
   & img {
     height: 100%;
     transform: scale(1.5, 1.5);
-    transition: all ease 250ms;
+    transition: all ease 500ms;
   }
 `;
 const Title = styled.h2`
@@ -48,7 +48,7 @@ const WatchNow = styled.div`
   background-color: white;
   height: 100%;
   width: 50%;
-  transition: all ease 250ms;
+  transition: all ease 500ms;
 `;
 
 const Container = styled.div`
@@ -62,7 +62,6 @@ const Container = styled.div`
   cursor: pointer;
 
   &:hover {
-    box-shadow: 2px 2px 0 0 gray;
     transform: scale(1.025, 1.025);
 
     & ${Thumbnail} {
