@@ -40,4 +40,15 @@ const SOCIALS_CONFIG = {
   },
 };
 
-export default SOCIALS_CONFIG;
+const defaultConfig = {
+  name: 'Invalid Social Key',
+  color: 'red;',
+  link: '',
+  icon: <></>,
+};
+
+function getSocialConfig(key) {
+  return SOCIALS_CONFIG[key] || defaultConfig;
+}
+
+export default getSocialConfig;

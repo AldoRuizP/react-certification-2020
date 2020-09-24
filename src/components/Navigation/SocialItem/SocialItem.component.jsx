@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SOCIAL_CONFIG from './constants';
+import getSocialConfig from './constants';
 
 const Icon = styled.span`
   --button-size: calc(var(--nav-size) * 0.5);
@@ -47,7 +47,7 @@ const Link = styled.a`
 `;
 
 function SocialItem(props) {
-  const { name, color, link, icon } = SOCIAL_CONFIG[props.social];
+  const { name, color, link, icon } = getSocialConfig(props.social);
 
   function handleClick(event) {
     event.preventDefault();
@@ -55,7 +55,7 @@ function SocialItem(props) {
   }
 
   return (
-    <Link color={color} href={link} onClick={handleClick}>
+    <Link role="button" color={color} href={link} onClick={handleClick}>
       <Icon>{icon}</Icon>
       {name}
     </Link>

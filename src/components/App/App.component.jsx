@@ -7,7 +7,6 @@ import FavoritesReducer from '../../providers/Favorites/Favorites.reducer';
 import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
-import SecretPage from '../../pages/Secret';
 import PlayerPage from '../../pages/Player';
 import ProfilePicture from '../../pages/ProfilePicture';
 import FavoritesPage from '../../pages/Favorites';
@@ -36,9 +35,6 @@ function App() {
               <Route exact path="/watch">
                 <PlayerPage />
               </Route>
-              <Private exact path="/secret">
-                <SecretPage />
-              </Private>
               <Private exact path="/profile-picture">
                 <ProfilePicture />
               </Private>
