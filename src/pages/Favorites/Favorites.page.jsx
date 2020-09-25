@@ -5,6 +5,8 @@ import FavoritesProvider from '../../providers/Favorites';
 
 const Section = styled.section`
   text-align: center;
+  width: 100vw;
+  max-width: 2000px;
   @media (max-width: 610px) {
     max-width: 95vw;
   }
@@ -72,7 +74,8 @@ function FavoritesPage() {
     if (state.favorites.length) {
       components = <VideoList videos={state.favorites} />;
     } else {
-      components = 'No favorite videos. Try adding a video to your favorites.';
+      components =
+        'No favorite videos. Try adding a video to your favorites by clicking on the star under each video.';
     }
 
     return components;

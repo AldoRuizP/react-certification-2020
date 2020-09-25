@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import FavoritesProvider from '../../../providers/Favorites';
 
 import { Favorite as FavoriteIcon } from '../../Icons/navigation';
 import { AVATAR_MAP } from '../../Icons/avatars';
+
+import { useAuth } from '../../../providers/Auth';
 
 const Container = styled.div`
   height: inherit;
@@ -93,11 +96,14 @@ const Favorite = styled.span`
 
 function VideoPlayer(props) {
   const [isFavorite, setFavorite] = useState(false);
+  const { authenticated } = useAuth();
+  const history = useHistory();
   const { state, dispatch } = useContext(FavoritesProvider);
 
   useEffect(() => {
     dispatch({ type: 'LOAD_FROM_STORAGE' });
     const favorite =
+      authenticated &&
       state.favorites &&
       state.favorites.length > 0 &&
       state.favorites.some((video) => video.videoId === props.videoId);
@@ -107,6 +113,12 @@ function VideoPlayer(props) {
 
   function handleFormClick(event) {
     event.preventDefault();
+
+    if (!authenticated) {
+      history.push('/login');
+      return;
+    }
+
     const {
       videoId,
       title,
