@@ -13,6 +13,14 @@ const Title = styled.h1`
   font-size: 3rem;
 `;
 
+const Notice = styled.p`
+  color: var(--wizeline-gray-dark);
+  font-size: 2rem;
+  width: 95%;
+  text-align: left;
+  margin: auto;
+`;
+
 function HomePage() {
   function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -20,6 +28,7 @@ function HomePage() {
 
   const query = useQuery();
   const searchQuery = query.get('q');
+  const sanitizedQuery = searchQuery && searchQuery.slice(0);
 
   const [videoList, setVideoList] = useState([]);
   const { videos } = useVideoFeed({ searchQuery });
@@ -33,6 +42,9 @@ function HomePage() {
     <>
       <Section ref={sectionRef}>
         <Title>WizeTube</Title>
+        {sanitizedQuery && (
+          <Notice>Showing search results for &quot;{sanitizedQuery}&quot; </Notice>
+        )}
         <VideoList videos={videoList} />
       </Section>
     </>
