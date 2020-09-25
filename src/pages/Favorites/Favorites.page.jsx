@@ -5,6 +5,9 @@ import FavoritesProvider from '../../providers/Favorites';
 
 const Section = styled.section`
   text-align: center;
+  @media (max-width: 610px) {
+    max-width: 95vw;
+  }
 `;
 const Title = styled.h1`
   font-size: 3rem;
@@ -14,6 +17,13 @@ const Title = styled.h1`
   text-transform: uppercase;
   display: flex;
   margin-left: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  @media (max-width: 610px) {
+    margin: 10px auto;
+    justify-content: center;
+  }
 `;
 const Button = styled.button`
   width: 200px;
@@ -28,10 +38,16 @@ const Button = styled.button`
   margin-top: 10px;
   margin-right: 40px;
   position: absolute;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 0px black;
   &:hover {
     cursor: pointer;
     background-color: var(--wizeline-red);
     transform: scale(1.15, 1.15);
+  }
+  @media (max-width: 610px) {
+    position: relative;
+    margin: 10px auto;
   }
 `;
 

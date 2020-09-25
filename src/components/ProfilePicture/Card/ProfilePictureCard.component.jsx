@@ -26,8 +26,11 @@ const ProfileImageContainer = styled.div`
   height: 135px;
   border: 1px solid black;
   border-radius: 10px;
-  margin: 10px;
   text-align: center;
+  margin: 10px 10px 10px auto;
+  @media (max-width: 370px) {
+    margin: 0 1px 10px 2px;
+  }
 
   & svg {
     max-height: 100px;
