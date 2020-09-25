@@ -5,7 +5,7 @@ const API_URL = 'https://www.googleapis.com/youtube/v3/search?';
 const PART = 'snippet';
 const MAX_RESULTS = 12;
 const TYPE = 'video';
-const { REACT_APP_YOUTUBE_API_KEY, REACT_APP_DEV_API } = process.env;
+const { REACT_APP_YOUTUBE_API_KEY, NODE_ENV } = process.env;
 
 // eslint-disable-next-line no-unused-vars
 function useVideoFeed(params) {
@@ -46,7 +46,7 @@ function useVideoFeed(params) {
     async function getVideos() {
       try {
         let list;
-        if (REACT_APP_DEV_API) {
+        if (NODE_ENV !== 'production') {
           const resultItems = mockData;
           list = parseVideoList(resultItems.items);
         } else {

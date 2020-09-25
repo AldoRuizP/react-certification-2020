@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import videoMockFile from './videoMockFile';
 
-const { REACT_APP_YOUTUBE_API_KEY, REACT_APP_DEV_API } = process.env;
+const { REACT_APP_YOUTUBE_API_KEY, NODE_ENV } = process.env;
 
 const useVideoFetch = (videoId) => {
   const [response, setResponse] = useState(null);
@@ -31,7 +31,7 @@ const useVideoFetch = (videoId) => {
     const fetchData = async () => {
       try {
         let parsedJson;
-        if (REACT_APP_DEV_API) {
+        if (NODE_ENV !== 'production') {
           parsedJson = parseResponse(videoMockFile);
         } else {
           const API_URL = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${REACT_APP_YOUTUBE_API_KEY}`;
