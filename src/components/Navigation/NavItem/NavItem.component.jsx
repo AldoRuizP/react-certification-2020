@@ -36,6 +36,10 @@ const Icon = styled.div`
       height: 25px;
     }
   }
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+  }
 `;
 
 function NavItem(props) {

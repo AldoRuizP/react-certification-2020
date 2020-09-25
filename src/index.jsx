@@ -11,9 +11,6 @@ const GlobalStyle = createGlobalStyle`
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   }
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-  }
   :root {
     --bg: #242526;
     --bg-accent: #484a4d;
@@ -45,10 +42,6 @@ const GlobalStyle = createGlobalStyle`
   }
   a:visited {
     color: var(--text-color);
-  }
-  .clickable-item:focus {
-    outline: none;
-    box-shadow: 0px 0px 0px 1px #fff inset;
   }
 `;
 
