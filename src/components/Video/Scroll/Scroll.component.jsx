@@ -5,7 +5,7 @@ import useVideoFeed from '../../../utils/hooks/useVideoFeed';
 
 const Wrapper = styled.div`
   position: relative;
-  padding: 5px 0;
+  padding: 5px 5px;
   height: 850px;
   overflow: auto;
 `;

@@ -49,6 +49,7 @@ const WatchNow = styled.div`
   height: 100%;
   width: 50%;
   transition: all ease 500ms;
+  font-weight: bold;
 `;
 
 const Container = styled.div`
@@ -57,12 +58,12 @@ const Container = styled.div`
   display: flex;
   flex-flow: row;
   overflow: hidden;
-  border: 1px solid black;
-  border-radius: 20px;
   cursor: pointer;
+  background-color: white;
 
   &:hover {
     transform: scale(1.025, 1.025);
+    border-radius: 20px;
 
     & ${Thumbnail} {
       position: absolute;
@@ -76,7 +77,7 @@ const Container = styled.div`
 
     & ${WatchNow} {
       display: grid;
-      background-color: black;
+      background-color: var(--wizeline-dark);
       color: white;
       place-items: center;
     }
