@@ -30,6 +30,8 @@ const GlobalStyle = createGlobalStyle`
     --wizeline-gray-dark: #9A9A9A;
     --wizeline-blue-light: #28B2BF;
     --wizeline-blue-dark: #00718C;
+    --wizeline-gold: #F5B335;
+    --wizeline-magenta: #902E57;
     --wizeline-dark: #001113;
   }
   ul {

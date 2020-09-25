@@ -24,7 +24,7 @@ const FavoritesReducer = (state, action) => {
       };
     }
     case 'CLEAR_FAVORITES': {
-      storage.set(FAVORITE_VIDEOS_KEY, JSON.stringify({}));
+      storage.set(FAVORITE_VIDEOS_KEY, JSON.stringify([]));
       return {
         ...state,
         favorites: [],

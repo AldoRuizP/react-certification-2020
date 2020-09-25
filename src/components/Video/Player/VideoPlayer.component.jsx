@@ -20,6 +20,7 @@ const Details = styled.div`
 const Title = styled.h1`
   margin: 0;
   font-size: 20px;
+  color: var(--wizeline-dark);
 `;
 const ChannelDetails = styled.div`
   display: flex;
@@ -28,17 +29,16 @@ const ChannelDetails = styled.div`
   width: 100%;
   align-items: center;
   margin-top: 10px;
-  border-top: 1px solid gray;
+  border-top: 1px solid var(--wizeline-gray);
   padding-top: 10px;
 `;
 const ChannelIcon = styled.div`
-  border: 1px solid black;
   height: 75px;
   width: 75px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background-color: white;
+  background-color: var(--wizeline-magenta);
   & svg {
     height: 75%;
   }
@@ -52,18 +52,20 @@ const Channel = styled.h2`
   font-size: 18px;
   position: relative;
   right: 0;
+  color: var(--wizeline-blue-dark);
 `;
 const TimeStamp = styled.p`
   font-size: 15px;
   padding: 0;
   margin: 0;
-  color: gray;
+  color: var(--wizeline-gray-dark);
 `;
 const Description = styled.p`
   margin: 0 0 0 95px;
   padding: 0;
   font-size: 15px;
   justify-content: center;
+  color: var(--wizeline-dark);
 `;
 const Favorite = styled.span`
   margin-left: auto;
@@ -74,20 +76,18 @@ const Favorite = styled.span`
   display: grid;
   place-items: center;
   cursor: pointer;
-  background-color: gray;
   border-radius: 50%;
   transition: all ease 250ms;
 
   & svg {
     height: 20px;
     width: 20px;
-    fill: ${(props) => (props.isFavorite ? 'gold' : 'white')};
+    fill: ${(props) =>
+      props.isFavorite ? `var(--wizeline-gold)` : `var(--wizeline-gray-dark)`};
   }
 
   &:hover {
-    transform: scale(2, 2);
-    & svg {
-    }
+    transform: scale(1.5, 1.5);
   }
 `;
 
