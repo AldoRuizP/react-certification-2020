@@ -4,7 +4,9 @@ import { FAVORITE_VIDEOS_KEY } from '../../utils/constants';
 const FavoritesReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_FAVORITE': {
-      const favorites = state.favorites.concat(action.payload);
+      const favorites = state.favorites
+        ? state.favorites.concat(action.payload)
+        : [action.payload];
       storage.set(FAVORITE_VIDEOS_KEY, JSON.stringify(favorites));
       return {
         ...state,

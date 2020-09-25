@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 const Container = styled.div``;
 
 function Scroll(props) {
-  const videoFeed = useVideoFeed(props.videoId) || { videos: [] };
+  const videoFeed = useVideoFeed({ relatedId: props.videoId }) || { videos: [] };
   let videos = [];
 
   if (videoFeed.videos && videoFeed.videos.length) {

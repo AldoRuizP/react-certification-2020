@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 
 const extend = keyframes`
@@ -31,12 +32,24 @@ const Input = styled.input`
 `;
 
 function SearchBar() {
+  const history = useHistory();
+
+  function handleKeyDown(event) {
+    if (event.key === 'Enter') {
+      console.log('enter pressed');
+      event.preventDefault();
+      history.push(`/?q=${event.target.value}`);
+      history.go(0);
+    }
+  }
+
   return (
     <Input
       type="text"
       id="searchItem"
       placeholder="Search for a video..."
       autoComplete="off"
+      onKeyDown={handleKeyDown}
     />
   );
 }

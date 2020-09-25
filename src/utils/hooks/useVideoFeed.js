@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
 import mockData from './videoMockData';
 
-// const API_URL = 'https://www.googleapis.com/youtube/v3/search?';
-// const PART = 'snippet';
-// const MAX_RESULTS = 12;
-// const TYPE = 'video';
-// const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
+const API_URL = 'https://www.googleapis.com/youtube/v3/search?';
+const PART = 'snippet';
+const MAX_RESULTS = 12;
+const TYPE = 'video';
+const { REACT_APP_YOUTUBE_API_KEY, REACT_APP_DEV_API } = process.env;
 
 // eslint-disable-next-line no-unused-vars
-function useVideoFeed(relatedId) {
+function useVideoFeed(params) {
   const [videos, setVideos] = useState(null);
+
+  const { relatedId, searchQuery } = params;
 
   function parseVideoList(items) {
     return items.map((item) => {
@@ -29,22 +31,30 @@ function useVideoFeed(relatedId) {
   }
 
   useEffect(() => {
-    // let formattedUrl = `${API_URL}part=${PART}&maxResults=${MAX_RESULTS}&type=${TYPE}&key=${API_KEY}`
+    let formattedUrl = `${API_URL}part=${PART}&maxResults=${MAX_RESULTS}&type=${TYPE}`;
 
-    // if (relatedId) {
-    //   formattedUrl += `&relatedToVideoId=${relatedId}`;
-    // }
+    if (relatedId) {
+      formattedUrl += `&relatedToVideoId=${relatedId}`;
+    }
 
-    // formattedUrl += `&key=${API_KEY}`;
+    if (searchQuery) {
+      formattedUrl += `&q=${searchQuery}`;
+    }
+
+    formattedUrl += `&key=${REACT_APP_YOUTUBE_API_KEY}`;
 
     async function getVideos() {
       try {
-        // const response = await fetch(formattedUrl);
-        // const resultItems = await response.json();
-        // const list = parseVideoList(resultItems.items);
-        // setVideos(list);
-        const resultItems = mockData;
-        const list = parseVideoList(resultItems.items);
+        let list;
+        if (REACT_APP_DEV_API) {
+          const resultItems = mockData;
+          list = parseVideoList(resultItems.items);
+        } else {
+          const response = await fetch(formattedUrl);
+          const resultItems = await response.json();
+          list = parseVideoList(resultItems.items);
+        }
+        setVideos(list);
         setVideos(list);
       } catch (error) {
         console.error('Bad fortune: ', error);
@@ -52,6 +62,7 @@ function useVideoFeed(relatedId) {
     }
 
     getVideos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { videos };

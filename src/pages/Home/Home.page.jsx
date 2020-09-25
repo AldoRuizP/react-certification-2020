@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import VideoList from '../../components/Video/List';
@@ -9,8 +10,15 @@ const Section = styled.section`
 `;
 
 function HomePage() {
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+
+  const query = useQuery();
+  const searchQuery = query.get('q');
+
   const [videoList, setVideoList] = useState([]);
-  const { videos } = useVideoFeed();
+  const { videos } = useVideoFeed({ searchQuery });
   const sectionRef = useRef(null);
 
   useEffect(() => {
