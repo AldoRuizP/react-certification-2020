@@ -28,7 +28,7 @@ const Content = styled.div`
 const Title = styled.h2`
   font-size: 24px;
   font-weight: 600;
-  color: #333333;
+  color: var(--wizeline-dark);
   margin: 0;
   padding: 0;
   height: 88px;
@@ -40,7 +40,7 @@ const Channel = styled.p`
   padding: 0;
   font-size: 18px;
   font-weight: 500;
-  color: #e74c3c;
+  color: var(--wizeline-red);
 `;
 
 const Details = styled.div`
@@ -49,7 +49,7 @@ const Details = styled.div`
     float: left;
     padding: 7px 15px;
     font-size: 17px;
-    background: #e74c3c;
+    background: var(--wizeline-red);
     color: white;
     font-weight: 500;
     border: none;
@@ -58,7 +58,7 @@ const Details = styled.div`
     transition: 300ms ease;
     &:hover {
       transform: scale(0.9);
-      background: #e64533;
+      background: var(--wizeline-red-light);
     }
     &:visited {
       color: white;
@@ -67,7 +67,7 @@ const Details = styled.div`
 `;
 
 const Description = styled.p`
-  color: #666666;
+  color: var(--wizeline-gray-dark);
   font-size: 16px;
   text-align: justify;
   padding: 0;
@@ -86,7 +86,7 @@ const Timestamp = styled.p`
   position: absolute;
   bottom: 18px;
   right: 30px;
-  color: #666666;
+  color: var(--wizeline-gray-dark);
 `;
 
 const Card = styled.div`
@@ -95,12 +95,12 @@ const Card = styled.div`
   width: 335px;
   display: block;
   background: white;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 5px 0px rgba(0, 0, 0, 0.25);
   transition: 400ms linear;
   margin: 10px auto;
 
   &:hover {
-    box-shadow: 0 1px 35px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.5);
 
     & ${Title} {
       font-size: 18px;

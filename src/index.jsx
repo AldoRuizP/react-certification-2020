@@ -23,6 +23,14 @@ const GlobalStyle = createGlobalStyle`
     --border: 1px solid #474a4d;
     --border-radius: 8px;
     --speed: 500ms;
+    --wizeline-red: #E93D44;
+    --wizeline-red-light: #F2575D;
+    --wizeline-black: #262E30;
+    --wizeline-gray: #DDDDDD;
+    --wizeline-gray-dark: #9A9A9A;
+    --wizeline-blue-light: #28B2BF;
+    --wizeline-blue-dark: #00718C;
+    --wizeline-dark: #001113;
   }
   ul {
     list-style: none;
