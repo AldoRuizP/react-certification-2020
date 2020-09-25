@@ -13,7 +13,7 @@ const List = styled.div`
 const Wrapper = styled.div`
   display: grid;
   place-items: center;
-  width: 100vw;
+  width: 100%;
   margin-top: 2rem;
 `;
 function VideoList(props) {

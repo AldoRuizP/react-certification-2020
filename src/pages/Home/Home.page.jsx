@@ -9,6 +9,10 @@ const Section = styled.section`
   text-align: center;
 `;
 
+const Title = styled.h1`
+  font-size: 3rem;
+`;
+
 function HomePage() {
   function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -28,6 +32,7 @@ function HomePage() {
   return (
     <>
       <Section ref={sectionRef}>
+        <Title>WizeTube</Title>
         <VideoList videos={videoList} />
       </Section>
     </>
