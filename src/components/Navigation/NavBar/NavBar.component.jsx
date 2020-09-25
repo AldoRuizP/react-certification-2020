@@ -75,7 +75,7 @@ function NavBar() {
     : getAvatarByName(null).svg;
 
   return (
-    <Nav>
+    <Nav id="main-navbar">
       <Link to="/">
         <Title>
           <Logo>

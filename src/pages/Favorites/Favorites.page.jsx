@@ -71,7 +71,7 @@ function FavoritesPage() {
   function checkVideosList() {
     let components;
 
-    if (state.favorites.length) {
+    if (state && state.favorites.length) {
       components = <VideoList videos={state.favorites} />;
     } else {
       components =
@@ -87,7 +87,7 @@ function FavoritesPage() {
         <Title>
           <>
             My Favorites
-            {state.favorites.length ? (
+            {state && state.favorites.length ? (
               <Button onClick={handleClick}>Delete all favorites</Button>
             ) : (
               ''
