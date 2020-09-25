@@ -9,17 +9,29 @@ const Section = styled.section`
 const Title = styled.h1`
   font-size: 3rem;
   letter-spacing: -2px;
+  font-weight: bold;
+  color: var(--wizeline-dark);
+  text-transform: uppercase;
+  display: flex;
+  margin-left: 40px;
 `;
 const Button = styled.button`
   width: 200px;
   height: 35px;
   background: white;
-  border: 1px solid black;
   font-size: 20px;
   margin: 20px 0;
+  background-color: var(--wizeline-red-light);
+  border: none;
+  transition: 250ms ease all;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 40px;
+  position: absolute;
   &:hover {
     cursor: pointer;
-    background-color: red;
+    background-color: var(--wizeline-red);
+    transform: scale(1.15, 1.15);
   }
 `;
 
@@ -38,12 +50,32 @@ function FavoritesPage() {
     });
   }
 
+  function checkVideosList() {
+    let components;
+
+    if (state.favorites.length) {
+      components = <VideoList videos={state.favorites} />;
+    } else {
+      components = 'No favorite videos. Try adding a video to your favorites.';
+    }
+
+    return components;
+  }
+
   return (
     <>
       <Section>
-        <Title>My Favorites</Title>
-        <Button onClick={handleClick}>Delete favorites</Button>
-        {state.favorites.length && <VideoList videos={state.favorites} />}
+        <Title>
+          <>
+            My Favorites
+            {state.favorites.length ? (
+              <Button onClick={handleClick}>Delete all favorites</Button>
+            ) : (
+              ''
+            )}
+          </>
+        </Title>
+        {checkVideosList()}
       </Section>
     </>
   );
