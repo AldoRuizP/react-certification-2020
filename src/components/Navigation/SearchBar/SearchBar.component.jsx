@@ -29,6 +29,17 @@ const Input = styled.input`
   color: white;
   font-size: 15px;
   letter-spacing: 2px;
+  @media (max-width: 750px) {
+    width: 30%;
+  }
+  @media (max-width: 490px) {
+    width: 97%;
+    top: 65px;
+    right: 5px;
+    left: 5px;
+    border-radius: 0;
+    transform-origin: center;
+  }
 `;
 
 function SearchBar() {
