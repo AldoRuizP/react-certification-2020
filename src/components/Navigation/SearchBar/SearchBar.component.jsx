@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 
@@ -44,13 +44,16 @@ const Input = styled.input`
 
 function SearchBar() {
   const history = useHistory();
+  const [value, setValue] = useState('');
 
   function handleKeyDown(event) {
     if (event.key === 'Enter') {
-      console.log('enter pressed');
       event.preventDefault();
       history.push(`/?q=${event.target.value}`);
       history.go(0);
+    } else if (event.key) {
+      const newValue = value + event.key;
+      setValue(newValue);
     }
   }
 
@@ -61,6 +64,8 @@ function SearchBar() {
       placeholder="Search for a video..."
       autoComplete="off"
       onKeyDown={handleKeyDown}
+      onChange={handleKeyDown}
+      value={value}
     />
   );
 }
