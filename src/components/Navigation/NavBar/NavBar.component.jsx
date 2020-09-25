@@ -27,6 +27,9 @@ const Title = styled.div`
   height: 100%;
   position: relative;
   display: inline-flex;
+  @media (max-width: 435px) {
+    width: 210px;
+  }
 `;
 const Logo = styled.span`
   & svg {
@@ -37,6 +40,10 @@ const Logo = styled.span`
     flex: 1;
     fill: white;
     margin-right: 10px;
+    @media (max-width: 435px) {
+      width: 25px;
+      height: 25px;
+    }
   }
 `;
 const Header = styled.span`
@@ -46,6 +53,9 @@ const Header = styled.span`
     flex-direction: column;
     flex-basis: 100%;
     flex: 3;
+    @media (max-width: 435px) {
+      width: 100px;
+    }
   }
 `;
 const Menu = styled.menu`
@@ -55,6 +65,7 @@ const Menu = styled.menu`
   justify-content: flex-end;
   margin: 0;
   width: -webkit-fill-available;
+  padding: 0;
 `;
 
 function NavBar() {
