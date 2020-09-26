@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import VideoPlayer from '../../components/Video/Player';
 import Scroll from '../../components/Video/Scroll';
@@ -12,7 +12,13 @@ const Container = styled.section`
 `;
 
 function PlayerPage() {
-  const videoId = window.location.search.slice(3);
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+
+  const query = useQuery();
+  const searchQuery = query.get('v');
+  const videoId = searchQuery && searchQuery.slice(0);
   const videoData = useVideoFetch(videoId);
   const history = useHistory();
 

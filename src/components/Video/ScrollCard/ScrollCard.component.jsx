@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -8,12 +8,18 @@ const Wrapper = styled.div`
   display: grid;
   place-items: center;
   padding: 5px 10px 5px 10px;
+  & a {
+    height: 100px;
+    width: 355px;
+    display: grid;
+  }
 `;
 
 const Description = styled.div`
   display: grid;
   padding: 5px;
   width: -webkit-fill-available;
+  color: black;
 `;
 const Thumbnail = styled.div`
   height: 100%;
@@ -84,26 +90,21 @@ const Container = styled.div`
   }
 `;
 function ScrollCard(props) {
-  const history = useHistory();
-
-  function handleClick() {
-    history.push(`/watch?v=${props.videoId}`);
-    history.go(0);
-  }
-
   return (
     <Wrapper>
-      <Container role="button" onKeyDown={handleClick} onClick={handleClick}>
-        <Thumbnail>
-          <img src={props.thumbnail} alt={props.title} />
-        </Thumbnail>
-        <WatchNow>Watch Now</WatchNow>
-        <Description>
-          <Title>{props.title}</Title>
-          <Channel>{props.channelTitle}</Channel>
-          <Timestamp>{props.publishedAt}</Timestamp>
-        </Description>
-      </Container>
+      <Link to={`watch?v=${props.videoId}`} style={{}}>
+        <Container>
+          <Thumbnail>
+            <img src={props.thumbnail} alt={props.title} />
+          </Thumbnail>
+          <WatchNow>Watch Now</WatchNow>
+          <Description>
+            <Title>{props.title}</Title>
+            <Channel>{props.channelTitle}</Channel>
+            <Timestamp>{props.publishedAt}</Timestamp>
+          </Description>
+        </Container>
+      </Link>
     </Wrapper>
   );
 }

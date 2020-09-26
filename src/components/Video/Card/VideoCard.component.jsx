@@ -130,12 +130,8 @@ const Card = styled.div`
 `;
 
 function VideoCard(props) {
-  function handleClick(event) {
-    event.preventDefault();
-    window.href = props.url;
-  }
   return (
-    <Card tabIndex="0" role="button" onKeyDown={handleClick} onClick={handleClick}>
+    <Card>
       <Thumbnail>
         <img src={props.thumbnail} alt={`${props.title}`} />
       </Thumbnail>
