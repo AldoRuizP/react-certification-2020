@@ -76,8 +76,7 @@ function ProfilePicture(props) {
   return (
     <ProfileImageContainer
       role="button"
-      onClick={setPicture}
-      onKeyDown
+      onClick={props.onClick || setPicture}
       tabIndex={props.index}
       ref={autoFocus}
     >
