@@ -2,19 +2,29 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Footer from './Footer.component';
 
-describe('Test render footer', () => {
-  let innerChildren;
+describe('Test the footer renders properly', () => {
+  let wrapper;
 
   beforeEach(() => {
-    const { container } = render(<Footer />);
-    innerChildren = container.firstChild.children;
+    wrapper = render(<Footer />);
   });
 
-  it('Renders the footer with three children', () => {
-    expect(innerChildren.length).toBe(3);
+  it('Should render the first paragraph with the project name', () => {
+    wrapper.getByText('React Certification by Aldo Ruiz');
   });
 
-  it('Renders the app name in the first child', () => {
-    expect(innerChildren[0].innerHTML).toBe('React Certification by Aldo Ruiz');
+  it('Should render the second paragraph with the icons credit', () => {
+    const iconCredits = ['Icons made byfrom', 'Freepik', 'www.flaticon.com'];
+    iconCredits.forEach((text) => wrapper.getByText(text));
+  });
+
+  it('Should render the third paragraph with the avatars credit', () => {
+    const avatarsCredits = [
+      'Animal Flat Colors Icon Pack',
+      'byon',
+      'Kerismaker',
+      'Iconscout',
+    ];
+    avatarsCredits.forEach((text) => wrapper.getByText(text));
   });
 });
