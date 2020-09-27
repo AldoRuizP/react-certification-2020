@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Section = styled.section`
+const Section = styled.footer`
   height: var(--footer-size);
   background-color: var(--bg);
   color: white;

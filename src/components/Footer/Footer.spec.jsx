@@ -9,6 +9,10 @@ describe('Test the footer renders properly', () => {
     wrapper = render(<Footer />);
   });
 
+  it('Should render a footer element', () => {
+    expect(wrapper.container.children[0].tagName).toBe('FOOTER');
+  });
+
   it('Should render the first paragraph with the project name', () => {
     wrapper.getByText('React Certification by Aldo Ruiz');
   });
