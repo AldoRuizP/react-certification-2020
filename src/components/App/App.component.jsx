@@ -26,24 +26,12 @@ function App() {
         <FavoritesProvider.Provider value={{ state, dispatch }}>
           <Layout>
             <Switch>
-              <Route exact path="/">
-                <HomePage />
-              </Route>
-              <Route exact path="/login">
-                <LoginPage />
-              </Route>
-              <Route exact path="/watch">
-                <PlayerPage />
-              </Route>
-              <Private exact path="/profile-picture">
-                <ProfilePicture />
-              </Private>
-              <Private exact path="/favorites">
-                <FavoritesPage />
-              </Private>
-              <Route path="*">
-                <NotFound />
-              </Route>
+              <Route exact path="/" component={HomePage} />
+              <Private exact path="/profile-picture" component={ProfilePicture} />
+              <Private exact path="/favorites" component={FavoritesPage} />
+              <Route exact path="/login" component={LoginPage} />
+              <Route exact path="/watch" component={PlayerPage} />
+              <Route component={NotFound} />
             </Switch>
           </Layout>
         </FavoritesProvider.Provider>
