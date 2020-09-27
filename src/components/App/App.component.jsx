@@ -27,8 +27,12 @@ function App() {
           <Layout>
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Private exact path="/profile-picture" component={ProfilePicture} />
-              <Private exact path="/favorites" component={FavoritesPage} />
+              <Private exact path="/profile-picture">
+                <ProfilePicture />
+              </Private>
+              <Private exact path="/favorites">
+                <FavoritesPage />
+              </Private>
               <Route exact path="/login" component={LoginPage} />
               <Route exact path="/watch" component={PlayerPage} />
               <Route component={NotFound} />
