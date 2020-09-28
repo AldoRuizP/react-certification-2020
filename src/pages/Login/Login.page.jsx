@@ -116,7 +116,13 @@ function LoginPage() {
           <FormGroup>
             <Label htmlFor="username">
               <strong>username </strong>
-              <Input required type="text" id="username" onChange={handleUserChange} />
+              <Input
+                required
+                type="text"
+                id="username"
+                onChange={handleUserChange}
+                value={user}
+              />
             </Label>
           </FormGroup>
           <FormGroup>
@@ -127,6 +133,7 @@ function LoginPage() {
                 type="password"
                 id="password"
                 onChange={handlePasswordChange}
+                value={pass}
               />
             </Label>
           </FormGroup>
