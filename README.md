@@ -13,6 +13,13 @@ Runs the app locally in production mode
 
 when running the app using this command, you'll use the real time fetched data from the youtube api. Beware, you may experience expiration timeouts form the youtube api, due to the limit.
 
+## Credentials
+
+To log in the app use the following credentials:
+
+`username: wizeline`
+`password: academy`
+
 ## Features
 
 ### Non logged in users

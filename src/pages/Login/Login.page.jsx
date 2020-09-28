@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { useAuth } from '../../providers/Auth';
+
+const { REACT_APP_DEFAULT_USERNAME, REACT_APP_DEFAULT_PASSWORD } = process.env;
 
 const Section = styled.section`
   min-height: 77vh;
@@ -66,14 +68,44 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
+const Hint = styled.span`
+  color: red;
+  margin-top: 20px;
+  font-size: 15px;
+`;
+
 function LoginPage() {
   const { login } = useAuth();
   const history = useHistory();
 
+  const [user, setUser] = useState('');
+  const [pass, setPass] = useState('');
+  const [hint, setHint] = useState('');
+
+  function handleUserChange(event) {
+    event.preventDefault();
+    setUser(event.target.value);
+  }
+
+  function handlePasswordChange(event) {
+    event.preventDefault();
+    setPass(event.target.value);
+  }
+
   function authenticate(event) {
     event.preventDefault();
-    login();
-    history.push('/');
+    if (user === REACT_APP_DEFAULT_USERNAME && pass === REACT_APP_DEFAULT_PASSWORD) {
+      login();
+      history.push('/');
+    } else {
+      setHint(
+        <div>
+          <p>Pro tip: Try using these credentials</p>
+          <p>Username: {REACT_APP_DEFAULT_USERNAME}</p>
+          <p>Password: {REACT_APP_DEFAULT_PASSWORD}</p>
+        </div>
+      );
+    }
   }
 
   return (
@@ -84,18 +116,24 @@ function LoginPage() {
           <FormGroup>
             <Label htmlFor="username">
               <strong>username </strong>
-              <Input required type="text" id="username" />
+              <Input required type="text" id="username" onChange={handleUserChange} />
             </Label>
           </FormGroup>
           <FormGroup>
             <Label htmlFor="password">
               <strong>password </strong>
-              <Input required type="password" id="password" />
+              <Input
+                required
+                type="password"
+                id="password"
+                onChange={handlePasswordChange}
+              />
             </Label>
           </FormGroup>
           <Button type="submit">Login</Button>
         </Form>
       </Wrapper>
+      <Hint>{hint}</Hint>
     </Section>
   );
 }
