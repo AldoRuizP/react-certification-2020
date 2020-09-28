@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import videoMockFile from './videoMockFile';
+import decodeHTMLEntities from '../escapeHTML';
 
 const { REACT_APP_YOUTUBE_API_KEY, NODE_ENV } = process.env;
 
@@ -18,8 +19,8 @@ const useVideoFetch = (videoId) => {
       } = obj.items[0].snippet;
       return {
         publishedAt: new Date(publishedAt).toDateString(),
-        title,
-        description,
+        title: decodeHTMLEntities(title),
+        description: decodeHTMLEntities(description),
         channelTitle,
         tags,
         url: `https://www.youtube.com/embed/${videoId}`,

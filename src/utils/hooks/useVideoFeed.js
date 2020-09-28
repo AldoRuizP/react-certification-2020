@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import mockData from './videoMockData';
+import decodeHTMLEntities from '../escapeHTML';
 
 const API_URL = 'https://www.googleapis.com/youtube/v3/search?';
 const PART = 'snippet';
@@ -20,11 +21,11 @@ function useVideoFeed(params) {
       const thumbnail = item.snippet.thumbnails.high.url;
       return {
         videoId,
-        title,
+        title: decodeHTMLEntities(title),
         channelTitle,
         publishTime: new Date(publishTime).toDateString(),
         thumbnail,
-        description,
+        description: decodeHTMLEntities(description),
         url: `https://www.youtube.com/embed/${videoId}`,
       };
     });
