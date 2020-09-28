@@ -12,6 +12,18 @@ const Wrapper = styled.div`
     height: 100px;
     width: 355px;
     display: grid;
+    @media (max-width: 700px) {
+      width: 100vw;
+    }
+  }
+  @media (max-width: 930px) {
+    max-width: 350px;
+    margin: auto;
+    padding: 5px 0;
+  }
+  @media (max-width: 700px) {
+    max-width: 100%;
+    margin: 0;
   }
 `;
 

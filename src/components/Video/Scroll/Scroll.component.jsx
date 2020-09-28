@@ -8,9 +8,24 @@ const Wrapper = styled.div`
   padding: 5px 5px;
   height: 850px;
   overflow: auto;
+  @media (max-width: 1780px) {
+    height: 900px;
+  }
+  @media (max-width: 930px) {
+    width: 100vw;
+    height: fit-content;
+  }
 `;
 
-const Container = styled.div``;
+const Container = styled.div`
+  @media (max-width: 930px) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    margin: auto;
+  }
+`;
 
 function Scroll(props) {
   const videoFeed = useVideoFeed({ relatedId: props.videoId }) || { videos: [] };

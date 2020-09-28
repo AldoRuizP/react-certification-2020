@@ -9,6 +9,11 @@ const Container = styled.section`
   min-height: 77vh;
   width: 100%;
   display: flex;
+  @media (max-width: 930px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100vw;
+  }
 `;
 
 function PlayerPage() {

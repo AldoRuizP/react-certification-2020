@@ -11,11 +11,18 @@ import { useAuth } from '../../../providers/Auth';
 const Container = styled.div`
   height: inherit;
   width: 74%;
+  @media (max-width: 930px) {
+    width: 100%;
+  }
 `;
 const Player = styled.iframe`
   width: 100%;
   height: 600px;
   border: none;
+  @media (max-width: 930px) {
+    height: 50vw;
+    width: 100vw;
+  }
 `;
 const Details = styled.div`
   padding: 10px 10px;
