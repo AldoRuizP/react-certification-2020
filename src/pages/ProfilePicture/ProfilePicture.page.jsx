@@ -26,6 +26,7 @@ function ProfilePicturePage() {
       index={index}
       image={AVATAR_MAP[avatarKey]}
       startActive={profilePicture === avatarKey}
+      key={avatarKey}
     />
   ));
 
