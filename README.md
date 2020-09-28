@@ -5,6 +5,14 @@
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+when running the app using this command, you'll use the default video data located in the `videoMockFile` and `videoMockData` files. This way you wont experience expiration timeouts form the youtube api.
+
+### `firebase serve`
+
+Runs the app locally in production mode
+
+when running the app using this command, you'll use the real time fetched data from the youtube api. Beware, you may experience expiration timeouts form the youtube api, due to the limit.
+
 ## Features
 
 ### Non logged in users
