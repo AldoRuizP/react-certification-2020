@@ -92,7 +92,7 @@ const Container = styled.div`
 function ScrollCard(props) {
   return (
     <Wrapper>
-      <Link to={`watch?v=${props.videoId}`} style={{}}>
+      <Link to={`watch?v=${props.videoId}`}>
         <Container>
           <Thumbnail>
             <img src={props.thumbnail} alt={props.title} />
