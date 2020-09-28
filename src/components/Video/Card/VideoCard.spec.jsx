@@ -42,6 +42,12 @@ describe('Test the video cards', () => {
     expect(title.tagName).toBe('H2');
   });
 
+  it('Should render a channel for the video card', () => {
+    const title = screen.getByText(mockProps.channelTitle);
+    expect(title).not.toBeNull();
+    expect(title.tagName).toBe('P');
+  });
+
   it('Should render a description for the video card', () => {
     const description = screen.getByText(mockProps.description);
     expect(description).not.toBeNull();
