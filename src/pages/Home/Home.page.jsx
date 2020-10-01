@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -29,14 +29,8 @@ function HomePage() {
   const query = useQuery();
   const searchQuery = query.get('q');
   const sanitizedQuery = searchQuery && searchQuery.slice(0);
-
-  const [videoList, setVideoList] = useState([]);
   const { videos } = useVideoFeed({ searchQuery });
   const sectionRef = useRef(null);
-
-  useEffect(() => {
-    setVideoList(videos);
-  }, [videos]);
 
   return (
     <>
@@ -45,7 +39,7 @@ function HomePage() {
         {sanitizedQuery && (
           <Notice>Showing search results for &quot;{sanitizedQuery}&quot; </Notice>
         )}
-        <VideoList videos={videoList} />
+        <VideoList videos={videos} />
       </Section>
     </>
   );

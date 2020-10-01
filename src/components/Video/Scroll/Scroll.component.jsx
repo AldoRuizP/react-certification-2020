@@ -28,14 +28,10 @@ const Container = styled.div`
 `;
 
 function Scroll(props) {
-  const videoFeed = useVideoFeed({ relatedId: props.videoId }) || { videos: [] };
-  let videos = [];
-
-  if (videoFeed.videos && videoFeed.videos.length) {
-    videos = videoFeed.videos.map((video) => {
-      return <ScrollCard {...video} key={video.videoId} />;
-    });
-  }
+  const videoFeed = useVideoFeed({ relatedId: props.videoId });
+  const videos = videoFeed.videos.map((video) => {
+    return <ScrollCard {...video} key={video.videoId} />;
+  });
 
   return (
     <Wrapper>
