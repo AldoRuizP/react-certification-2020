@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "jest": {
-    "coveragePathIgnorePatterns": ["<rootDir>/build/", "<rootDir>/node_modules/", "<rootDir>/src/index.jsx" ]
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/build/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/src/index.jsx"
+    ]
   },
   "dependencies": {
     "react": "^16.13.1",
