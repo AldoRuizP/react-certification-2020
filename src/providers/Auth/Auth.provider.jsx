@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useState, useContext, useCallback } from 'react';
 
 import { AUTH_STORAGE_KEY, PROFILE_PICTURE } from '../../utils/constants';
 import { storage } from '../../utils/storage';
@@ -14,17 +14,10 @@ function useAuth() {
 }
 
 function AuthProvider({ children }) {
-  const [authenticated, setAuthenticated] = useState(false);
-  const [profilePicture, setProfilePictureState] = useState(undefined);
-
-  useEffect(() => {
-    const lastAuthState = storage.get(AUTH_STORAGE_KEY);
-    const isAuthenticated = Boolean(lastAuthState);
-    const currentPicture = storage.get(PROFILE_PICTURE);
-    setProfilePictureState(currentPicture);
-
-    setAuthenticated(isAuthenticated);
-  }, []);
+  const [authenticated, setAuthenticated] = useState(() => storage.get(AUTH_STORAGE_KEY));
+  const [profilePicture, setProfilePictureState] = useState(() =>
+    storage.get(PROFILE_PICTURE)
+  );
 
   const setProfilePicture = useCallback((newPicture) => {
     storage.set(PROFILE_PICTURE, newPicture);
