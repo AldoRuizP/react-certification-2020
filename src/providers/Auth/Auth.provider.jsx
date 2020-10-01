@@ -32,14 +32,12 @@ function AuthProvider({ children }) {
   }, []);
 
   const getProfilePicture = useCallback(() => {
-    const lastAuthState = storage.get(AUTH_STORAGE_KEY);
-    const isAuthenticated = Boolean(lastAuthState);
     let avatar = 'incognito';
-    if (isAuthenticated) {
+    if (authenticated) {
       avatar = storage.get(PROFILE_PICTURE);
     }
     return avatar;
-  }, []);
+  }, [authenticated]);
 
   const login = useCallback(() => {
     setAuthenticated(true);
