@@ -22,8 +22,7 @@ function PlayerPage() {
   }
 
   const query = useQuery();
-  const searchQuery = query.get('v');
-  const videoId = searchQuery && searchQuery.slice(0);
+  const videoId = query.get('v');
   const videoData = useVideoFetch(videoId);
   const history = useHistory();
 
