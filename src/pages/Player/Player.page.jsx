@@ -1,9 +1,10 @@
 import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import VideoPlayer from '../../components/Video/Player';
 import Scroll from '../../components/Video/Scroll';
 import useVideoFetch from '../../utils/hooks/useVideoFetch';
+import GetQueryParam from '../../utils/getQueryParams';
 
 const Container = styled.section`
   min-height: 77vh;
@@ -17,12 +18,7 @@ const Container = styled.section`
 `;
 
 function PlayerPage() {
-  function useQuery() {
-    return new URLSearchParams(useLocation().search);
-  }
-
-  const query = useQuery();
-  const videoId = query.get('v');
+  const videoId = GetQueryParam('v');
   const videoData = useVideoFetch(videoId);
   const history = useHistory();
 

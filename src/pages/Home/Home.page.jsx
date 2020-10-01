@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
+import GetQueryParam from '../../utils/getQueryParams';
 import VideoList from '../../components/Video/List';
 import useVideoFeed from '../../utils/hooks/useVideoFeed';
 
@@ -22,13 +22,7 @@ const Notice = styled.p`
 `;
 
 function HomePage() {
-  function useQuery() {
-    return new URLSearchParams(useLocation().search);
-  }
-
-  const query = useQuery();
-  const searchQuery = query.get('q');
-  const sanitizedQuery = searchQuery && searchQuery.slice(0);
+  const searchQuery = GetQueryParam('q');
   const { videos } = useVideoFeed({ searchQuery });
   const sectionRef = useRef(null);
 
@@ -36,8 +30,8 @@ function HomePage() {
     <>
       <Section ref={sectionRef}>
         <Title>WizeTube</Title>
-        {sanitizedQuery && (
-          <Notice>Showing search results for &quot;{sanitizedQuery}&quot; </Notice>
+        {searchQuery && (
+          <Notice>Showing search results for &quot;{searchQuery}&quot; </Notice>
         )}
         <VideoList videos={videos} />
       </Section>
