@@ -1,11 +1,3 @@
-// import React from 'react';
-
-// const FavoritesContext = React.createContext({
-//   favorites: [],
-// });
-
-// export default FavoritesContext;
-
 import React, { useReducer, useContext } from 'react';
 import FavoritesReducer from './Favorites.reducer';
 import { FAVORITE_VIDEOS_KEY } from '../../utils/constants';

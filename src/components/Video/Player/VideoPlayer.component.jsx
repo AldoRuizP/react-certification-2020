@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { useFavorites } from '../../../providers/Favorites';
-// import FavoritesProvider from '../../../providers/Favorites';
-
 import { Favorite as FavoriteIcon } from '../../Icons/navigation';
 import { AVATAR_MAP } from '../../Icons/avatars';
-
 import { useAuth } from '../../../providers/Auth';
 
 const Container = styled.div`
@@ -106,7 +103,6 @@ function VideoPlayer(props) {
   const [isFavorite, setFavorite] = useState(false);
   const { authenticated } = useAuth();
   const history = useHistory();
-  // const { state, dispatch } = useContext(FavoritesProvider);
   const [state, dispatch] = useFavorites();
 
   useEffect(() => {

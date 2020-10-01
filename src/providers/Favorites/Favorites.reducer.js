@@ -30,13 +30,6 @@ const FavoritesReducer = (state, action) => {
         favorites: [],
       };
     }
-    case 'LOAD_FROM_STORAGE': {
-      const favorites = storage.get(FAVORITE_VIDEOS_KEY) || [];
-      return {
-        ...state,
-        favorites: favorites.length ? JSON.parse(favorites) : [],
-      };
-    }
     default:
       return state;
   }
