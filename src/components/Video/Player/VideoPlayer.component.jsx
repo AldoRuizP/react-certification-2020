@@ -109,14 +109,11 @@ function VideoPlayer(props) {
 
   useEffect(() => {
     dispatch({ type: 'LOAD_FROM_STORAGE' });
-    const favorite =
-      authenticated &&
-      state.favorites &&
-      state.favorites.length > 0 &&
-      state.favorites.some((video) => video.videoId === props.videoId);
-    setFavorite(favorite);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (authenticated && state.favorites.length) {
+      const favorite = state.favorites.some((video) => video.videoId === props.videoId);
+      setFavorite(favorite);
+    }
+  }, [authenticated, dispatch, props.videoId]);
 
   function handleFormClick(event) {
     event.preventDefault();
