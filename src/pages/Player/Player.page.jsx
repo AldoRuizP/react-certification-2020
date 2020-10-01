@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import VideoPlayer from '../../components/Video/Player';
@@ -22,9 +22,11 @@ function PlayerPage() {
   const videoData = useVideoFetch(videoId);
   const history = useHistory();
 
-  if (videoData.error) {
-    history.push('/404');
-  }
+  useEffect(() => {
+    if (videoData.error) {
+      history.push('/404');
+    }
+  }, [history, videoData]);
 
   if (!videoData.response) {
     return <div>Loading...</div>;
