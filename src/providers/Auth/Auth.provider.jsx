@@ -24,14 +24,6 @@ function AuthProvider({ children }) {
     setProfilePictureState(newPicture);
   }, []);
 
-  const getProfilePicture = useCallback(() => {
-    let avatar = 'incognito';
-    if (authenticated) {
-      avatar = storage.get(PROFILE_PICTURE);
-    }
-    return avatar;
-  }, [authenticated]);
-
   const login = useCallback(() => {
     setAuthenticated(true);
     storage.set(AUTH_STORAGE_KEY, true);
@@ -57,7 +49,6 @@ function AuthProvider({ children }) {
         logout,
         authenticated,
         setProfilePicture,
-        getProfilePicture,
         profilePicture,
       }}
     >
