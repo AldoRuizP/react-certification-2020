@@ -69,16 +69,10 @@ function FavoritesPage() {
   }
 
   function checkVideosList() {
-    let components;
-
     if (state && state.favorites.length) {
-      components = <VideoList videos={state.favorites} />;
-    } else {
-      components =
-        'No favorite videos. Try adding a video to your favorites by clicking on the star under each video.';
+      return <VideoList videos={state.favorites} />;
     }
-
-    return components;
+    return 'No favorite videos. Try adding a video to your favorites by clicking on the star under each video.';
   }
 
   return (
