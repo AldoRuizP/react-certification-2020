@@ -46,14 +46,16 @@ function SearchBar() {
   const history = useHistory();
   const [value, setValue] = useState('');
 
+  function handleChange(event) {
+    event.preventDefault();
+    setValue(event.target.value);
+  }
+
   function handleKeyDown(event) {
     if (event.key === 'Enter') {
       event.preventDefault();
-      history.push(`/?q=${event.target.value}`);
+      history.push(`/?q=${value}`);
       history.go(0);
-    } else if (event.key) {
-      const newValue = value + event.key;
-      setValue(newValue);
     }
   }
 
@@ -63,8 +65,8 @@ function SearchBar() {
       id="searchItem"
       placeholder="Search for a video..."
       autoComplete="off"
+      onChange={handleChange}
       onKeyDown={handleKeyDown}
-      onChange={handleKeyDown}
       value={value}
     />
   );
