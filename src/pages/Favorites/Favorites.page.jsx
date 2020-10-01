@@ -64,12 +64,12 @@ function FavoritesPage() {
     });
   }
 
-  function checkVideosList() {
-    if (state && state.favorites.length) {
-      return <VideoList videos={state.favorites} />;
-    }
-    return 'No favorite videos. Try adding a video to your favorites by clicking on the star under each video.';
-  }
+  const videoList =
+    state && state.favorites.length ? (
+      <VideoList videos={state.favorites} />
+    ) : (
+      'No favorite videos. Try adding a video to your favorites by clicking on the star under each video.'
+    );
 
   return (
     <>
@@ -84,7 +84,7 @@ function FavoritesPage() {
             )}
           </>
         </Title>
-        {checkVideosList()}
+        {videoList}
       </Section>
     </>
   );
