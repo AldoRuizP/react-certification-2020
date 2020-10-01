@@ -1,7 +1,7 @@
-import React, { useEffect, useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import VideoList from '../../components/Video/List';
-import FavoritesProvider from '../../providers/Favorites';
+import { useFavorites } from '../../providers/Favorites';
 
 const Section = styled.section`
   text-align: center;
@@ -54,11 +54,7 @@ const Button = styled.button`
 `;
 
 function FavoritesPage() {
-  const { state, dispatch } = useContext(FavoritesProvider);
-
-  useEffect(() => {
-    dispatch({ type: 'LOAD_FROM_STORAGE' });
-  }, [dispatch]);
+  const [state, dispatch] = useFavorites();
 
   function handleClick(event) {
     event.preventDefault();

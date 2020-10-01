@@ -1,7 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-import FavoritesProvider from '../../../providers/Favorites';
+import { useFavorites } from '../../../providers/Favorites';
+// import FavoritesProvider from '../../../providers/Favorites';
 
 import { Favorite as FavoriteIcon } from '../../Icons/navigation';
 import { AVATAR_MAP } from '../../Icons/avatars';
@@ -105,15 +106,15 @@ function VideoPlayer(props) {
   const [isFavorite, setFavorite] = useState(false);
   const { authenticated } = useAuth();
   const history = useHistory();
-  const { state, dispatch } = useContext(FavoritesProvider);
+  // const { state, dispatch } = useContext(FavoritesProvider);
+  const [state, dispatch] = useFavorites();
 
   useEffect(() => {
-    dispatch({ type: 'LOAD_FROM_STORAGE' });
-    if (authenticated && state.favorites.length) {
+    if (authenticated) {
       const favorite = state.favorites.some((video) => video.videoId === props.videoId);
       setFavorite(favorite);
     }
-  }, [authenticated, dispatch, props.videoId]);
+  }, [authenticated, dispatch, props.videoId, state.favorites]);
 
   function handleFormClick(event) {
     event.preventDefault();
