@@ -11,15 +11,7 @@ describe('Test the search bar', () => {
   it('Renders allows input to be inserted in the text bar', () => {
     const { getByPlaceholderText } = render(<SearchBar />);
     const inputArea = getByPlaceholderText('Search for a video...');
-
-    fireEvent.keyDown(inputArea, {
-      key: 'a',
-      code: 'KeyA',
-    });
-    fireEvent.keyDown(inputArea, {
-      key: 'b',
-      code: 'KeyB',
-    });
-    expect(screen.getByPlaceholderText('Search for a video...').value).toBe('ab');
+    fireEvent.change(inputArea, { target: { value: 'abc' } });
+    expect(screen.getByPlaceholderText('Search for a video...').value).toBe('abc');
   });
 });
